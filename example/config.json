@@ -1,0 +1,11 @@
+{
+  "locals": {
+    "title": "International things"
+  },
+  "i18n": {
+    "locales": ["en", "sv", "it", "ja"]
+  },
+  "plugins": [
+    "../"
+  ]
+}

@@ -1,0 +1,13 @@
+doctype html
+html(lang= setLocale(page.metadata.locale))
+  head
+    meta(charset='utf-8')
+    title= __(title)
+  body
+    h1= __('Hello world!')
+    != page.html
+    ul
+        - for (let p of contents._.pages) {
+        -   if (p === page) continue;
+            li: a(href=p.url)= __('In '+p.metadata.locale)
+        - }
