@@ -23,7 +23,7 @@ function plugin(env, callback) {
         // that the i18n library does not recognize as a string.
         env.locals[key] = function() {
             let args = Array.from(arguments).map((arg) => String(arg))
-            return reg['__'].apply(reg, args)
+            return reg[key].apply(reg, args)
         }
     }
     callback()
