@@ -19,7 +19,12 @@ function plugin(env, callback) {
     conf.register = reg
     i18n.configure(conf)
     for (const key of ['__', '__n', '__l', '__h', '__mf', 'setLocale']) {
-        env.locals[key] = reg[key]
+        // workaround for Nunjucks that sometimes passes a String subclass
+        // that the i18n library does not recognize as a string.
+        env.locals[key] = function() {
+            let args = Array.from(arguments).map((arg) => String(arg))
+            return reg['__'].apply(reg, args)
+        }
     }
     callback()
 }
